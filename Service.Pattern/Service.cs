@@ -22,7 +22,7 @@ namespace Service.Pattern
         }
         #endregion Constructor
 
-        LL
+        
 
         public virtual void Add(TEntity entity)
         {
