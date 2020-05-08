@@ -21,6 +21,5 @@ namespace Solution.Data.Infrastructure
 
         IEnumerable<T> GetAll();
 
-
     }
 }

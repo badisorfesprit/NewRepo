@@ -11,7 +11,6 @@ namespace Solution.Service
 {
     public class UserService : Service<User>, IUserService
     {
-
         public UserService() : base(utk)
         {
 
@@ -32,6 +31,5 @@ namespace Solution.Service
             List<User> list = m.ToList<User>();
             return list;
         }
-
     }
 }

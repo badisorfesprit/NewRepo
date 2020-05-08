@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+
+
+<html>
+<head>
+    <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #charContainer {
+            widows: 450px;
+            height: 400px;
+            width: 600px;
+            border: 1px solid #0094ff;
+            padding: 1px;
+            border-radius: 4px;
+        }
+
+        #jobtype {
+            widows: 180px;
+            height: 180px;
+            width: 180px;
+            padding: 1px;
+            border-radius: 4px;
+            center;
+        }
+    </style>
+    <body>
+
+        <h2>Stat of Tasks (To Do, Doing, Done)</h2>
+        <div id="charContainer">
+            <canvas id="jobtype"></canvas>
+
+        </div>
+
+
+        <script>
+            var oilCanvas = document.getElementById("jobtype");
+            var repArray=@Html.Raw(Json.Encode(ViewBag.REP));
+            var type=@Html.Raw(Json.Encode(ViewBag.type));
+            var oilData = {
+                labels: ['Violence','Securite','Maltraitance'],
+                datasets: [
+                    {
+                        data: repArray,
+                        backgroundColor: [
+                          "#63FF84"  ,
+                          "#FF6384",
+                          "000000"
+
+                        ]
+                    }]
+            };
+
+            var pieChart = new Chart(oilCanvas, {
+                type: 'doughnut',
+                data: oilData
+            });
+
+
+        </script>
+    </body>
+</head>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

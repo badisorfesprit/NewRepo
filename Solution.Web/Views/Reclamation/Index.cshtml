@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Solution.Web.Models.ReclamationVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+    @using (Html.BeginForm())
+    {<table>
+            <tr>
+                <td>
+                    <div>
+                        Search by title: @Html.TextBox("searchString")
+                    </div>
+                </td>
+                <td> <input type="submit" value="Search" id="submit" /> </td>
+            </tr>
+        </table>}
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Nom de l'enfant
+                </th>
+                <th>
+                
+                    @Html.DisplayNameFor(model => model.ComplaintType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateReclamation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Comment)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr class="success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ComplaintType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateReclamation)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ReclamationId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ReclamationId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ReclamationId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    -

@@ -60,9 +60,13 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Configurations\IdentityUserLoginConfiguration.cs" />
     <Compile Include="Configurations\IdentityUserRoleConfiguration.cs" />
-    <Compile Include="Migrations\202002242134451_mig001.cs" />
-    <Compile Include="Migrations\202002242134451_mig001.designer.cs">
-      <DependentUpon>202002242134451_mig001.cs</DependentUpon>
+    <Compile Include="Configurations\LikeConfiguration.cs" />
+    <Compile Include="Configurations\PublicationConfiguration.cs" />
+    <Compile Include="Configurations\ReplyConfiguration.cs" />
+    <Compile Include="CustomUserStore.cs" />
+    <Compile Include="Migrations\202005022117225_fefefe.cs" />
+    <Compile Include="Migrations\202005022117225_fefefe.designer.cs">
+      <DependentUpon>202005022117225_fefefe.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
@@ -89,8 +93,8 @@
     <Folder Include="CustomConventions\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002242134451_mig001.resx">
-      <DependentUpon>202002242134451_mig001.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005022117225_fefefe.resx">
+      <DependentUpon>202005022117225_fefefe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Solution.Domain.Entities
 {
-    public class Like
+   public class Like
     {
-
         [Key, Column(Order = 1)]
         public string idUser { get; set; }
         [ForeignKey("idUser ")]

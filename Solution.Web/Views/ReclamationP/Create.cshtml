@@ -1,0 +1,88 @@
+﻿@model Solution.Web.Models.ReclamationPVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "ReclamationP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>ReclamationP</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group row">
+    <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Nom :</b></label>
+    <div class="col-md-9">
+        @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Ville :</b></label>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Ville, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Ville, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Code Postale :</b></label>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.CodePostale, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CodePostale, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label" style="margin-top:-0.5%"><b class="animated  zoomInUp delay-1s">Reclamation state :</b></label>
+
+        <span class="bg-dark py-1 px-2 rounded animated  heartBeat delay-2s"><span class="text-white">Parent <br /> @Html.RadioButtonFor(m => m.Genre, "Parent", new { @class = "form-input-styled" })</span></span>  <br />  <p style="color:transparent">....................</p>
+
+        <span class="bg-dark py-1 px-2 rounded animated  heartBeat delay-2s"><span class="text-white">Visiteur <br /> @Html.RadioButtonFor(m => m.Genre, "Visiteur", new { @class = "form-input-styled" })</span></span>
+
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Type de Reclamation :</b></label>
+
+        <div class="col-lg-9">
+            @Html.EnumDropDownListFor(m => m.ComplaintType, "Choisir le type")
+            @Html.ValidationMessageFor(m => m.ComplaintType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Date de Reclamation :</b></label>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.DateReclamation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateReclamation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Comment :</b></label>
+        <div class="col-md-9">
+            @Html.TextAreaFor(m => m.Comment, new { @class = "form-control", rows = "5", cols = "3", placeholder = "You can comment the problem here...", })
+            @Html.ValidationMessageFor(m => m.Comment)
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

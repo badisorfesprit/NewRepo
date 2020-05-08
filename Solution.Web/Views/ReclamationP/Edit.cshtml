@@ -1,0 +1,89 @@
+﻿@model Solution.Web.Models.ReclamationPVM
+
+@{
+    ViewBag.Title = "Edit";
+     Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "ReclamationP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>ReclamationPVM</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ReclamationPId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ComplaintType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.ComplaintType, "Choisir le type")
+            @Html.ValidationMessageFor(model => model.ComplaintType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label" style="margin-top:-0.5%"><b class="animated  zoomInUp delay-1s">Reclamation state :</b></label>
+
+        <span class="bg-dark py-1 px-2 rounded animated  heartBeat delay-2s"><span class="text-white">Parent <br /> @Html.RadioButtonFor(m => m.Genre, "Parent", new { @class = "form-input-styled" })</span></span>  <br />  <p style="color:transparent">....................</p>
+
+        <span class="bg-dark py-1 px-2 rounded animated  heartBeat delay-2s"><span class="text-white">Visiteur <br /> @Html.RadioButtonFor(m => m.Genre, "Visiteur", new { @class = "form-input-styled" })</span></span>
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ville, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Ville, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Ville, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CodePostale, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CodePostale, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CodePostale, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateReclamation, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateReclamation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateReclamation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Comment, new { @class = "form-control", rows = "5", cols = "3", placeholder = "You can comment the problem here...", })
+            @Html.ValidationMessageFor(m => m.Comment)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

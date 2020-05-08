@@ -1,0 +1,63 @@
+﻿@model Solution.Web.Models.ReclamationVM
+@{
+    ViewBag.Title = "_DisplayTask";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>_DisplayTask</h2>
+
+<div class="price-wrap d-flex flex-row justify-content-center">
+    <h3> Name :</h3>
+    <h3>@Html.DisplayFor(modelItem => Model.Nom)</h3>
+</div>
+
+
+
+<div class="price-wrap d-flex flex-row justify-content-center">
+    <h3>Priority :</h3>
+    <h3>@Html.DisplayFor(modelItem => Model.ComplaintType)</h3>
+</div>
+
+<div class="price-wrap d-flex flex-row justify-content-center">
+    <h3>Start Date :</h3>
+    <h3>@Html.DisplayFor(modelItem => Model.DateReclamation)</h3>
+</div>
+
+
+@if (Model.ComplaintType.ToString().Equals("Violence"))
+{
+    <div class="price-wrap d-flex flex-row justify-content-center">
+        <h3>Complexity :</h3>
+        <h3 id="pop5">@Html.DisplayFor(modelItem => Model.ComplaintType)</h3>
+    </div>
+}
+@if (Model.ComplaintType.ToString().Equals("Securite"))
+{
+    <div class="price-wrap d-flex flex-row justify-content-center">
+        <h3>Complexity :</h3>
+        <h3 id="pop4">@Html.DisplayFor(modelItem => Model.ComplaintType)</h3>
+    </div>
+}
+
+@if (Model.ComplaintType.ToString().Equals("Maltraitance"))
+{
+    <div class="price-wrap d-flex flex-row justify-content-center">
+        <h3>Complexity :</h3>
+        <h3 id="pop3">@Html.DisplayFor(modelItem => Model.ComplaintType)</h3>
+    </div>
+}
+<div class="price-wrap d-flex flex-row justify-content-center">
+    <h3>State :</h3>
+    <h3>@Html.DisplayFor(modelItem => Model.Comment)</h3>
+</div>
+
+
+
+@*<div class="price-wrap d-flex flex-row justify-content-center">*@
+
+
+<p>@Html.ActionLink("Details", "Details", new { id = Model.ReclamationId })</p>
+<p>@Html.ActionLink("Metre a jour", "Edit", new { id = Model.ReclamationId })</p>
+<p>@Html.ActionLink("Supprimer", "Delete", new { id = Model.ReclamationId })</p>
+
+-
