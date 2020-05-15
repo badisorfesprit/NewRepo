@@ -7,7 +7,6 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Solution.Data.Infrastructure
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T:class
@@ -71,10 +70,9 @@ namespace Solution.Data.Infrastructure
                 
 
         }
-
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return DbSet.ToList();
         }
     }
 }

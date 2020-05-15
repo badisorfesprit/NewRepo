@@ -22,7 +22,7 @@ namespace Service.Pattern
         }
         #endregion Constructor
 
-        
+
 
         public virtual void Add(TEntity entity)
         {
@@ -85,7 +85,7 @@ namespace Service.Pattern
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 

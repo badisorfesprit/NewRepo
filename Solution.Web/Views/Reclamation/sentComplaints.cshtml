@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Solution.Web.Models.ReclamationVM>
+
+@{
+    ViewBag.Title = "sent Complaints";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Index</h2>
+<section class="page-header section-notch">
+    <div class="overlay">
+        <div class="container">
+            <h3>Our Popular Classes</h3>
+            <ul>
+                <li><a href=@Url.Action("Index", "Home")>Home</a></li>
+                <li>-</li>
+                <li>Reclamer</li>
+            </ul>
+        </div><!-- container -->
+    </div><!-- overlay -->
+</section><!-- page header -->
+<section class="classes padding-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+
+                                @Html.DisplayNameFor(model => model.ComplaintType)
+                            </th>
+                            <th>
+
+                                @Html.DisplayNameFor(model => model.state)
+                            </th>
+                            <th>
+
+                                Sent To
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Comment)
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+            {
+            <tr class="success">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.state)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.receiver.FirstName ) @Html.DisplayFor(modelItem => item.receiver.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateReclamation)
+                </td>
+                <td>
+
+                    @if (item.Comment.Length >= 25)
+                    {
+                        @item.Comment.Substring(0, 25)
+                        <text> ... </text>
+                    }
+                    else
+                    {
+                        @item.Comment
+                    }
+                </td>
+                @if (item.state.ToString() == "demand")
+                {
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ReclamationId }) |
+                        @Html.ActionLink("Respound", "Details", new { id = item.ReclamationId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ReclamationId })
+                    </td>
+
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("show Response", "Details", new { id = item.ReclamationId }) |
+                    </td>
+                }
+                
+            </tr>
+            }
+                    </tbody>
+
+                </table>
+                </div>
+            </div>
+        </div>
+</section>
+                @section scripts {
+                    <script src="~/Content/Front/assets/plugins/datatables/jquery.dataTables.js"></script>
+                    <script src="~/Content/Front/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+                    <!-- page script -->
+                    <script>
+                        $(function () {
+                            $('#example1').DataTable({
+                                "paging": true,
+                                "lengthChange": true,
+                                "searching": true,
+                                "ordering": true,
+                                "info": true,
+                                "autoWidth": true,
+                            });
+                        });
+                    </script>
+                }

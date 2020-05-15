@@ -1,0 +1,88 @@
+﻿@using Solution.Web.Models
+@model Solution.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+
+}
+
+<h2>@ViewBag.Title.</h2>
+<div class="bg_color_2">
+    <div class="container">
+        <div id="register">
+            <h1>Create a new account</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <hr />
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="box_form">
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.LastName)<br />
+                                @Html.TextBoxFor(x => x.LastName,
+                             new { @class = "form-control" })
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.FirstName)<br />
+                                @Html.TextBoxFor(x => x.FirstName,
+                            new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Email)<br />
+                                @Html.TextBoxFor(x => x.Email,
+                           new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Password)<br />
+                                @Html.PasswordFor(x => x.Password,
+                            new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.ConfirmPassword)<br />
+                                @Html.PasswordFor(x => x.ConfirmPassword,
+                            new { @class = "form-control" })
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.BirthDate)<br />
+                                @Html.TextBoxFor(x => x.BirthDate,
+                             new { @class = "form-control", type = "date" })
+
+                            </div>
+
+                            <!--Role-->
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Role)<br />
+                                @Html.DropDownList("Role",
+                    new SelectList(Enum.GetValues(typeof(Role))),
+                    "Select a role",
+                    new { @class = "form-control", @onChange = "THEFUNCTION(this.selectedIndex);" })
+                            </div>
+                            <!--Patient div-->
+
+
+
+                            <!--JavaScript-->
+                            <script type="text/javascript">
+                                function THEFUNCTION(i) {
+
+                                }
+                            </script>
+
+                            <div id="pass-info" class="clearfix"></div>
+                            <div class="form-group text-center add_top_30">
+                                <input class="btn_1" type="submit" value="Submit">
+                            </div>
+                        </div>
+                        <p class="text-center"><small>Make sure your informations are exact for a better experience.</small></p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
